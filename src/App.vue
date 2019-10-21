@@ -4,8 +4,10 @@
       <router-link to="/main">Main</router-link>
       <router-link to="/favorites">Favorites</router-link>
     </div>
-    <switch-theme :class="!theme && 'dark'"></switch-theme>
-    <router-view :class="!theme && 'dark'" />
+    <div class="app-content" :class="!theme && 'dark'">
+      <switch-theme ></switch-theme>
+      <router-view/>
+    </div>
   </div>
 </template>
 
@@ -33,6 +35,7 @@ export default {
   color: #2c3e50;
   width: 100vw;
   height: 100vh;
+  overflow-y: hidden
 }
 
 #nav-dark {
@@ -84,5 +87,9 @@ export default {
 
 ::-webkit-scrollbar {
   display: none;
+}
+.app-content{
+  overflow-y: scroll;
+  height: 91vh;
 }
 </style>

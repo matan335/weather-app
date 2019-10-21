@@ -75,7 +75,6 @@ export default {
 <style lang="scss">
 .Main {
   height: 83.8%;
-  overflow-y: scroll;
   display: flex;
   flex-direction: column;
 }
