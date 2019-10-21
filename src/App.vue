@@ -6,7 +6,9 @@
     </div>
     <div class="app-content" :class="!theme && 'dark'">
       <switch-theme ></switch-theme>
-      <router-view/>
+      <keep-alive>
+        <router-view/>
+      </keep-alive>
     </div>
   </div>
 </template>

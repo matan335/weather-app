@@ -52,4 +52,11 @@ table {
     text-align: left;
   }
 }
+
+@media(max-width: 764px) {
+  .app-content .theme-container h1{
+    font-size: 13px !important;
+  }
+
+}
 </style>

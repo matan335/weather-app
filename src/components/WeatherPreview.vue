@@ -77,5 +77,10 @@ export default {
     display: flex;
     justify-content: space-evenly;
   }
+  @media(max-width: 764px){
+    .forcast-list {
+      flex-direction: column;
+    }
+}
 }
 </style>
