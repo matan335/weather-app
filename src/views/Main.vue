@@ -49,13 +49,6 @@ export default {
     },
     async getAutoCompleteLocation(locationStr) {
       const url = `${AUTO_COMPLETE_API}?apikey=${WEATHER_KEY}&q=${locationStr}`;
-      // const res = await fetch(url, {
-      //   headers: { 
-      //     "Access-Control-Allow-Origin": "*" ,
-      //     "Content-Type": "application/json"
-      //   },
-      //   mode: 'no-cors'
-      // });
       const res = await fetch(url)
       console.log('res',res)
 
@@ -67,13 +60,6 @@ export default {
     },
     async getWeatherFromLocation(location) {
       const url = `${WEATHER_API}/${location.Key}?apikey=${WEATHER_KEY}`;
-      // const res = await fetch(url, {
-      //   headers: {
-      //      "Access-Control-Allow-Origin": "*" ,
-      //      "Content-Type": "application/json"
-      //   },
-      //   mode: 'no-cors'
-      // });
       const res = await fetch(url)
       console.log('res',res)
       const data = await res.json();
@@ -82,13 +68,6 @@ export default {
     },
     async getForcastFromLocation(location) {
       const url = `${FORECASTS_API}/${location.Key}?apikey=${WEATHER_KEY}`;
-      // const res = await fetch(url, {
-      //   headers: { 
-      //     "Access-Control-Allow-Origin": "*",
-      //     "Content-Type": "application/json"
-      //   },
-      //   mode: 'no-cors'
-      // });
       const res = await fetch(url)
       console.log('res',res)
 
