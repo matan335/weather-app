@@ -22,7 +22,7 @@ export default {
     loading: false
   }),
   created() {
-    // this.submitSearch("Tel Aviv");
+    this.submitSearch("Tel Aviv");
   },
   methods: {
     async submitSearch(locationStr) {
