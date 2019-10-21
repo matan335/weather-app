@@ -3,7 +3,7 @@
     <div class="search-input-container">
       <md-field>
         <label>Location</label>
-        <md-input v-model="location" placeholder="city"></md-input>
+        <md-input v-model="location" placeholder="city" :class="'dark-input'"></md-input>
       </md-field>
     </div>
     <button class="btn-search">
@@ -20,7 +20,7 @@ import swal from "sweetalert";
 export default {
   name: "SearchLocation",
   data: () => ({
-    location: null,
+    location: "",
     faSearch
   }),
   methods: {
@@ -29,17 +29,17 @@ export default {
       // el.value = value
     },
     handleSubmit(event) {
-      event.preventDefault();
+      if (event) event.preventDefault();
       //ingnore spacing
-      const location = this.location.split(' ').join('')
+      const location = this.location.split(" ").join("");
       //check if only english letters
       const isValid = /^[a-zA-Z]+$/.test(location);
 
       if (!isValid) {
-        swal({ 
-          title: "Not valid city", 
-          text:'Make sure you only type english letters',
-          icon: "error" 
+        swal({
+          title: "Not valid city",
+          text: "Make sure you only type english letters",
+          icon: "error"
         });
         return;
       }
@@ -59,6 +59,26 @@ export default {
   margin: 0 auto;
   display: flex;
   align-items: center;
+  .dark-input {
+    color: white !important;
+    -webkit-text-fill-color: white !important;
+  }
+  .dark-input::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white !important;
+    opacity: 1 !important; /* Firefox */
+  }
+
+  .dark-input:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: white !important;
+  }
+
+  .dark-input::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: white !important;
+  }
+
   .search-input-container {
     width: 100%;
   }

@@ -1,5 +1,5 @@
 {
-    "WEATHER_KEY":"JVZ4CG7xVG4SX6ntdCTh1KP6qJjz7jJq",
+    "WEATHER_KEY":"JeV0mvRpWhvrzeyTjQR7GimWVz4LaBGN",
     "AUTO_COMPLETE_API": "https://dataservice.accuweather.com/locations/v1/cities/autocomplete",
     "WEATHER_API":"https://dataservice.accuweather.com/currentconditions/v1",
     "FORECASTS_API":"http://dataservice.accuweather.com/forecasts/v1/daily/5day"

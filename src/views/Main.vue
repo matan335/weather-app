@@ -7,12 +7,12 @@
 </template>
 
 <script>
+import { makeId } from '../utiles/utiles'
+import swal from 'sweetalert'
 import SearchLocation from "@/components/SearchLocation.vue";
 import WeatherList from "@/components/WeatherList.vue";
 import APIS from "../utiles/APIS.json";
 const { WEATHER_KEY, AUTO_COMPLETE_API, WEATHER_API, FORECASTS_API } = APIS;
-console.log('APIS',APIS);
-
 
 export default {
   name: "Main",
@@ -20,6 +20,9 @@ export default {
     locationData: true,
     loading: false
   }),
+  created(){
+    this.submitSearch('Tel Aviv')
+  },
   methods: {
     async submitSearch(locationStr) {
       this.loading = true;
@@ -27,16 +30,19 @@ export default {
         const locations = await this.getAutoCompleteLocation(locationStr);
 
         for (let i = 0; i < locations.length; i++) {
+          const id = makeId()
           const location = locations[i];
           const weather = await this.getWeatherFromLocation(location);
           const forcast = await this.getForcastFromLocation(location)
-          locations[i] = { location, weather, forcast };
+          locations[i] = { id, location, weather, forcast };
         }
 
         this.locationData = locations;
         this.loading = false;
       } catch (err) {
-        console.log(err), (this.loading = false);
+        this.loading = false;
+        swal({title:'Failed to load', icon:'error'})
+        console.log('err', err)
       }
     },
     async getAutoCompleteLocation(locationStr) {
@@ -65,3 +71,10 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.Main {
+  height: 83.8%;
+  overflow-y: scroll;
+}
+</style>

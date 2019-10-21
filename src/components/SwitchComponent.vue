@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: "Switch",
+  name: "SwitchComponent",
   data: () => ({
     value: null
   }),

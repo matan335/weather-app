@@ -1,15 +1,20 @@
 <template>
-  <div class="Favorites">Favorites</div>
+  <section class="Favorites">
+    <weather-list :locations="favorites" :favorite="true"></weather-list>
+  </section>
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
-
+import WeatherList from "@/components/WeatherList.vue";
 export default {
   name: 'Favorites',
+  computed:{
+    favorites() {
+      return this.$store.getters.favorites
+    },
+  },
   components: {
-
+    WeatherList
   }
 }
 </script>
