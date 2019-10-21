@@ -27,9 +27,6 @@ export default new Vuex.Store({
     changeTheme(state) {
       if (state.theme === 'light') state.theme = 'dark'
       else state.theme = 'light'
-
-      console.log('state.theme ',state.theme );
-      
     },
     //degrees
     toogleDegreeUnit(state) {
@@ -39,18 +36,13 @@ export default new Vuex.Store({
 
     //favorites
     toggleFavorite(state, { payload: { location } }) {
-      console.log('toggleFavorite location', location);
-
       const isFound = Boolean(state.favorites.find(favorite => favorite.location.Key === location.location.Key))
-      console.log('isFound',isFound);
-      
       if (isFound) state.favorites = state.favorites.filter(favorite => favorite.location.Key !== location.location.Key)
       else {
         state.favorites.push(location)
       }
       saveToStorage(state.favorites)
     },
-
   },
   actions: {
   },

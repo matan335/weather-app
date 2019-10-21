@@ -32,9 +32,6 @@ export default {
   name: "WeatherPreview",
   props: ["location", "favorite"],
   data: () => ({ faHeart }),
-  created() {
-    console.log("WeatherPreview props", this.location);
-  },
   computed: {
     getDegreeUnit() {
       return this.$store.getters.getDegreeUnit;

@@ -2,7 +2,7 @@
   <div>
     <div class="degrees-container">
       <h1>Current degrees: °{{getDegreeUnit}}</h1>
-      <md-switch v-model="value" @change="change" :class="darkTheme ? 'dark-checkbox md-primary': ' md-primary'"></md-switch>
+      <md-switch :value="isDegreeUnitC" @change="change" :class="darkTheme ? 'dark-checkbox md-primary': ' md-primary'"></md-switch>
     </div>
   </div>
 </template>
@@ -10,9 +10,6 @@
 <script>
 export default {
   name: "SwitchComponent",
-  data: () => ({
-    value: null
-  }),
   methods: {
     change() {
       this.$store.commit("toogleDegreeUnit");
@@ -21,6 +18,9 @@ export default {
   computed: {
     getDegreeUnit() {
       return this.$store.getters.getDegreeUnit;
+    },
+    isDegreeUnitC() {
+      return this.$store.getters.getDegreeUnit === 'C';
     },
     darkTheme() {
       return this.$store.getters.theme === 'dark';
