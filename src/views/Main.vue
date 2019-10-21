@@ -47,19 +47,19 @@ export default {
     },
     async getAutoCompleteLocation(locationStr) {
       const url = `${AUTO_COMPLETE_API}?apikey=${WEATHER_KEY}&q=${locationStr}`;
-      const res = await fetch(url);
+      const res = await fetch(url,{mode: 'no-cors'});
       const data = await res.json();
       return data;
     },
     async getWeatherFromLocation(location) {
       const url = `${WEATHER_API}/${location.Key}?apikey=${WEATHER_KEY}`;
-      const res = await fetch(url);
+      const res = await fetch(url,{mode: 'no-cors'});
       const data = await res.json();
       return data;
     },
     async getForcastFromLocation(location) {
       const url = `${FORECASTS_API}/${location.Key}?apikey=${WEATHER_KEY}`;
-      const res = await fetch(url);
+      const res = await fetch(url,{mode: 'no-cors'});
       const data = await res.json();
       return data;
     }
