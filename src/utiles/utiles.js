@@ -7,14 +7,20 @@ export function saveToStorage(item) {
     return localStorage.setItem(STORAGE_KEY, JSON.stringify(item))
 }
 
-export function makeId(length = 17){
+export function makeId(length = 17) {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-    for(var i=0; i < length; i++)
-    {
+    for (var i = 0; i < length; i++) {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
 
     return text;
+}
+
+export function fToC(fahrenheit) {
+    var fTemp = fahrenheit;
+    var fToCel = (fTemp - 32) * 5 / 9;
+    fToCel = Math.round( fToCel * 10 ) / 10;
+    return fToCel
 }

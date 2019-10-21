@@ -76,5 +76,7 @@ export default {
 .Main {
   height: 83.8%;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
 }
 </style>

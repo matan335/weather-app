@@ -2,7 +2,7 @@
   <div>
     <div class="degrees-container">
       <h1>Current degrees: °{{getDegreeUnit}}</h1>
-      <md-switch v-model="value" @change="change"></md-switch>
+      <md-switch v-model="value" @change="change" :class="darkTheme ? 'dark-checkbox md-primary': ' md-primary'"></md-switch>
     </div>
   </div>
 </template>
@@ -21,6 +21,9 @@ export default {
   computed: {
     getDegreeUnit() {
       return this.$store.getters.getDegreeUnit;
+    },
+    darkTheme() {
+      return this.$store.getters.theme === 'dark';
     }
   }
 };
@@ -33,6 +36,7 @@ export default {
   justify-content: space-around;
   width: 60%;
   margin: 0 auto;
+
 }
 .md-switch {
   display: flex;

@@ -2,7 +2,7 @@
   <div>
     <div class="theme-container">
       <h1>Change Theme {{theme}} </h1>
-      <md-switch v-model="themeBool" @change="change"></md-switch>
+      <md-switch v-model="themeBool" @change="change" :class="darkTheme ? 'dark-checkbox md-primary': ' md-primary'"></md-switch>
     </div>
   </div>
 </template>
@@ -24,7 +24,9 @@ export default {
     },
     themeBool() {
       return (this.$store.getters.theme === 'light');
-
+    },
+    darkTheme() {
+      return this.$store.getters.theme === 'dark';
     }
   }
 };

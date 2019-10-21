@@ -7,23 +7,27 @@
 
 <script>
 import moment from "moment";
+import { fToC } from '../utiles/utiles.js'
 export default {
   name: "ForcastPreview",
   props: ["forcast"],
-  created() {
-    console.log("ForcastPreview props", this.forcast);
-  },
   computed: {
     getDate() {
       return moment(this.forcast.Date).format("dddd");
     },
+    
     minimum() {
       const { Minimum } = this.forcast.Temperature;
-      return Minimum.Value + ' °' + Minimum.Unit;
+      if(this.getDegreeUnit === 'C') return fToC(Minimum.Value) + ' °' + this.getDegreeUnit
+      return Minimum.Value + ' °' + this.getDegreeUnit;
     },
     maximum() {
       const { Maximum } = this.forcast.Temperature;
-      return Maximum.Value + ' °' + Maximum.Unit;
+      if(this.getDegreeUnit === 'C') return fToC(Maximum.Value) + ' °' + this.getDegreeUnit
+      return Maximum.Value + ' °' + this.getDegreeUnit;
+    },
+    getDegreeUnit(){
+      return this.$store.getters.getDegreeUnit
     }
   }
 };

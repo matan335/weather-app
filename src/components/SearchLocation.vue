@@ -3,11 +3,11 @@
     <div class="search-input-container">
       <md-field>
         <label>Location</label>
-        <md-input v-model="location" placeholder="city" :class="'dark-input'"></md-input>
+        <md-input v-model="location" placeholder="city" :class="!theme &&'dark-input'"></md-input>
       </md-field>
     </div>
     <button class="btn-search">
-      <font-awesome-icon :icon="faSearch" class="search-icon" />
+      <font-awesome-icon :icon="faSearch" class="search-icon" :class="!theme && 'dark-search-btn'"/>
     </button>
   </form>
 </template>
@@ -24,10 +24,6 @@ export default {
     faSearch
   }),
   methods: {
-    handleChange(value) {
-      // const el = document.querySelector('.search-input')
-      // el.value = value
-    },
     handleSubmit(event) {
       if (event) event.preventDefault();
       //ingnore spacing
@@ -43,8 +39,12 @@ export default {
         });
         return;
       }
-
       this.$emit("submit-search", this.location);
+    }
+  },
+  computed:{
+    theme(){
+      return this.$store.getters.theme === 'light'
     }
   },
   components: {
@@ -88,6 +88,9 @@ export default {
   }
   .search-icon {
     font-size: 28px;
+  }
+  .dark-search-btn {
+    color:white
   }
 }
 </style>

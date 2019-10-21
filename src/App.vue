@@ -4,8 +4,8 @@
       <router-link to="/main">Main</router-link>
       <router-link to="/favorites">Favorites</router-link>
     </div>
-    <switch-theme></switch-theme>
-    <router-view :class="theme && 'dark'" />
+    <switch-theme :class="!theme && 'dark'"></switch-theme>
+    <router-view :class="!theme && 'dark'" />
   </div>
 </template>
 
@@ -35,7 +35,7 @@ export default {
   height: 100vh;
 }
 
-#nav {
+#nav-dark {
   padding: 30px;
   display: flex;
   justify-content: space-evenly;
@@ -51,7 +51,7 @@ export default {
     }
   }
 }
-#nav-dark {
+#nav {
   padding: 30px;
   display: flex;
   justify-content: space-evenly;
@@ -71,5 +71,18 @@ export default {
 .dark {
   background: #1b1d27;
   color:white;
+}
+
+// .md-switch-container{
+//   background-color:purple !important;
+//   // background-color:rgba(242, 245, 255, 0.67)
+// }
+.md-switch.md-theme-default.dark-checkbox:not(.md-checked) .md-switch-container {
+  // background-color:purple !important;
+  background-color:rgba(242, 245, 255, 0.67)
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 </style>
